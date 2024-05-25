@@ -1,0 +1,64 @@
+---
+
+    import PHP from "../components/icons/Php.astro";
+    import JavaScript from "../components/icons/JavaScript.astro";
+    import VueJS from "../components/icons/VueJS.astro";
+
+    const TAGS = {
+        "PHP": {
+            name: "PHP",
+            class: "text-white",
+            icon: PHP,
+        },
+        "Vue": {
+            name: "Vue",
+            class: "text-white",
+            icon: VueJS,
+        },
+        "JavaScript": {
+            name: "JavaScript",
+            class: "text-white",
+            icon: JavaScript,
+        },
+    }
+
+    const PROJECTS = [
+        {
+            title: "Gofacturas CMR",
+            description: "Gofacturas CMR - Gofacturas - Gofacturas CMR - Gofacturas CMR - Gofacturas CMR - Gofacturas CMR - Gofacturas CMR - Gofacturas CMR",
+            link: "https://gofacturas.com/",
+            gitgub: "https://github.com/Emermv/gofacturas/",
+            image: "/projects/gofacturas.webp",
+            tags:  [TAGS.PHP, TAGS.Vue, TAGS.JavaScript],
+        },
+        // {
+        //     title: "Astro",
+        //     description: "The official Astro framework",
+        //     link: "https://astro.build/",
+        //     gitgub: "https://github.com/withastro/astro",
+        //     image: "/astro.png",
+        //     tags:  ["Astro", "Framework", "JavaScript", "TypeScript"],
+        // },
+    ]
+
+---
+
+{
+    PROJECTS.map((project) => (
+        <article>
+            <h3 class="text-2xl font-semibold text-yellow-200 mb-2">{project.title}</h3>
+            <p class="text-lg mb-4 text-pretty">{project.description}</p>
+            <ul class="flex gap-x-2 flex-row">
+                {project.tags.map((tag) => (
+                    <li>
+                        <span class={`text-md px-3 flex gap-x-2 rounded-full border border-white/10 justify-center items-center bg-white/5 hover:bg-white/10 hover:scale-105 transition ${tag.class} py-1 px-2`}>
+                            <tag.icon class="size-4" />
+                            {tag.name}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+            <img class="rounded shadow-2xl shadow-white/10" src="{project.image}" alt={`Captura de pantalla del proyecto ${project.title}`} srcset="">
+        </article>
+    ))
+}

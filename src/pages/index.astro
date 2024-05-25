@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Badge from '../components/Badge.astro';
+import LinkedIn from '../components/icons/LinkedIn.astro';
+import GitHub from '../components/icons/GitHub.astro';
+import SocialPill from '../components/SocialPill.astro';
+import Mail from '../components/icons/Mail.astro';
+import Experience from '../components/Experience.astro';
+import SectionConteiner from '../components/SectionConteiner.astro';
+import Briefcase from '../components/icons/Briefcase.astro';
+import CodeIcon from '../components/icons/CodeIcon.astro';
+import Projects from '../components/Projects.astro';
+---
+
+<Layout title="Portafololio de Jose Morales - Desarrollador y programador web"
+	description="Portafolio de Jose Morales - Desarrollador y programador web">
+	<main class="px-4 lg:px-0">
+		<SectionConteiner class="py-44 pb-32">
+			<img class="rounded-full size-12 mb-4" src="../../public/foto perfil redes.jpg" alt="logo jose morales">
+			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
+				Hey, soy Jose Morales <a 
+				href="https://www.linkedin.com/in/josemoralesv24/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="flex justify-center items-center">
+					<Badge>Disponible para trabajar</Badge>
+				</a>
+			</h1>
+			<h2 class="text-xl lg:text-2xl text-wrap max-w-[700px]"><span class="opacity-80">Desarrollador Web Full Stack</span> con <span>dos años de experiencia</span>. 
+				De Lima - Peru. Especializado en crear y publicar sitios web
+			</h2>
+
+			<nav class="flex flex-row gap-x-4 mt-8 flex-wrap ">
+				<SocialPill href="https://www.linkedin.com/in/josemoralesv24/">
+					<LinkedIn class="size-4 md:size-6" />
+					LinkedIn
+				</SocialPill>
+				<SocialPill href="https://github.com/josemoralesv24">
+					<GitHub class="size-4 md:size-6" />
+					GitHub
+				</SocialPill>
+				<SocialPill href="https://github.com/josemoralesv24">
+					<Mail class="size-4 md:size-6" />
+					joseluismoralesvega24@gmail.com
+				</SocialPill>
+			</nav>
+		</SectionConteiner>
+		<SectionConteiner id="experience">
+			<h2 class="text-3xl font-semibold mt-6 flex gap-x-3">
+				<Briefcase class="size-7" />
+				Experiencia laboral</h2>
+			<Experience />
+		</SectionConteiner>
+		<SectionConteiner id="projects">
+			<h2 class="text-3xl font-semibold mt-6 flex gap-x-3">
+				<CodeIcon class="size-7" />
+				Proyectos</h2>
+			<Projects />
+		</SectionConteiner>
+	</main>
+</Layout>
+
+<style>
+	
+</style>

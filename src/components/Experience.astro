@@ -1,0 +1,34 @@
+---
+import ExperienceItem from "./ExperienceItem.astro"
+
+    const EXPERIENCE = [
+        {
+            date: 'Actualmente ...',
+            title: "Desarrollador Web Full Stack - Gofacturas",
+            description: "Desarrollando modulos de front-end y back-end, para la creacion un sistema de gestión de inventario, facturacion y ventas. Ademas de crear modulos dedicados segun el cliente.",
+            link: "https://gofacturas.com/",
+        },
+        {
+            date: 'Marzo 2021',
+            title: "Application UI code in Tailwind CSS",
+            description: "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+        },
+        {
+            date: 'Julio 2020',
+            title: "Application UI code in Tailwind CSS",
+            description: "Get access to over 20+ pages including a dashboard layout, charts, kanban board, calendar, and pre-order E-commerce & Marketing pages.",
+        },
+    ]
+---
+
+
+<ol class="relative border-s border-gray-200 dark:border-gray-700 ml-2">
+    {
+        EXPERIENCE.map((experience) => (
+        <li class="mb-10 ms-4">
+            <ExperienceItem {...experience}/>
+        </li>
+            
+        ))
+    }
+</ol>
