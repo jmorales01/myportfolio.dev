@@ -1,12 +1,107 @@
+---
+import LenguageSelector from "./LenguageSelector.astro"
+import ThemeToggle from "./ThemeToggle.astro"
+
+
+const navItems = [
+  {
+    title: "Experiencia",
+    label: "experiencia",
+    url: "/#experiencia",
+  },
+  {
+    title: "Proyectos",
+    label: "proyectos",
+    url: "/#proyectos",
+  },
+  {
+    title: "Sobre mí",
+    label: "sobre-mi",
+    url: "/#sobre-mi",
+  },
+  {
+    title: "Contacto",
+    label: "contacto",
+    url: "mailto:miduga@gmail.com",
+  },
+]
+---
+
 <header
-	class={`flex justify-center items-center mx-auto py-5 static top-0 w-full xl:w-[1120px] z-10`}>
-
-	<nav class={`border border-black rounded-md px-3 py-1 flex flex-row items-center bg-neutral-200 dark:bg-black/50 backdrop-blur-2xl`}>
-		<a class="hover:bg-white/10 rounded-full px-3 transition" href="/#top">Home</a>
-		<a class="hover:bg-white/10 rounded-full px-3 transition" href="/#experience">Experiencia</a>
-		<a class="hover:bg-white/10 rounded-full px-3 transition" href="/#projects">Proyectos</a>
-		<a class="hover:bg-white/10 rounded-full px-3 transition" href="/#about">Sobre mi</a>
-		<a class="hover:bg-white/10 rounded-full px-3 transition" href="/#contact">Contact</a>
-	</nav>
-
+  class="fixed top-0 z-10 flex items-center justify-center w-full mx-auto py-3 backdrop-blur-sm"
+>
+  <nav
+    class="flex px-3 text-sm font-medium text-gray-600 dark:text-gray-200 justify-center items-center"
+  >
+    {
+      navItems.map((link) => (
+        <a
+          class="relative block px-3 py-1 mx-2 transition rounded-full bg-black/10 dark:bg-white/10 hover:text-yellow-500 dark:hover:text-yellow-400"
+          aria-label={link.label}
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))
+    }
+	<!-- <LenguageSelector /> -->
+    <ThemeToggle />
+  </nav>
 </header>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll("section")
+    const navItems = document.querySelectorAll("header nav a")
+
+    const callback = (entries: any[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navItems.forEach((item) => {
+            if (item.getAttribute("aria-label") == entry.target.id) {
+              item.classList.add("text-yellow-500")
+            } else {
+              item.classList.remove("text-yellow-500")
+            }
+          })
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(callback, {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.3,
+    })
+
+    sections.forEach((section) => {
+      observer.observe(section)
+    })
+
+    // Cleanup function
+    document.onvisibilitychange = () => {
+      if (document.visibilityState === "hidden") {
+        observer.disconnect()
+      } else {
+        sections.forEach((section) => {
+          observer.observe(section)
+        })
+      }
+    }
+  })
+</script>
+
+<style>
+
+  header {
+	animation: nav-shadown 1s linear both;
+	animation-timeline: scroll();
+	animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
+    to {
+      @apply shadow-lg ring-1 backdrop-blur bg-black/20 dark:bg-white/20 ring-white/10;
+    }
+  }
+</style>
