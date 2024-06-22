@@ -10,6 +10,8 @@ import SectionConteiner from '../components/SectionConteiner.astro';
 import Briefcase from '../components/icons/Briefcase.astro';
 import CodeIcon from '../components/icons/CodeIcon.astro';
 import Projects from '../components/Projects.astro';
+import ProfileCheck from '@/components/icons/ProfileCheck.astro';
+import AboutMe from '@/components/AboutMe.astro';
 ---
 
 <Layout title="Portafololio de Jose Morales - Desarrollador y programador web"
@@ -56,6 +58,12 @@ import Projects from '../components/Projects.astro';
 				<CodeIcon class="size-7" />
 				Proyectos</h2>
 			<Projects />
+		</SectionConteiner>
+		<SectionConteiner id="sobre-mi">
+			<h2 class="text-3xl font-semibold mt-6 flex gap-x-3 items-center text-black/80 dark:text-white/80">
+				<ProfileCheck class="size-7" />
+				Proyectos</h2>
+			<AboutMe />
 		</SectionConteiner>
 	</main>
 </Layout>
