@@ -17,8 +17,9 @@ import AboutMe from '@/components/AboutMe.astro';
 <Layout title="Portafololio de Jose Morales - Desarrollador y programador web"
 	description="Portafolio de Jose Morales - Desarrollador y programador web">
 	<main class="px-4 lg:px-0">
+
 		<SectionConteiner class="py-44 pb-32">
-			<img class="rounded-full size-12 mb-4" src="../../public/foto perfil redes.jpg" alt="logo jose morales">
+			<img class="rounded-full size-12 mb-4" src="/foto perfil redes.jpg" alt="logo jose morales">
 			<h1 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
 				Hey, soy Jose Morales <a 
 				href="https://www.linkedin.com/in/josemoralesv24/"
@@ -47,24 +48,28 @@ import AboutMe from '@/components/AboutMe.astro';
 				</SocialPill>
 			</nav>
 		</SectionConteiner>
+
 		<SectionConteiner id="experience">
 			<h2 class="text-3xl font-semibold mt-6 flex gap-x-3">
 				<Briefcase class="size-7" />
 				Experiencia laboral</h2>
 			<Experience />
 		</SectionConteiner>
+
 		<SectionConteiner id="projects">
 			<h2 class="text-3xl font-semibold mt-6 flex gap-x-3">
 				<CodeIcon class="size-7" />
 				Proyectos</h2>
 			<Projects />
 		</SectionConteiner>
+
 		<SectionConteiner id="sobre-mi">
 			<h2 class="text-3xl font-semibold mt-6 flex gap-x-3 items-center text-black/80 dark:text-white/80">
 				<ProfileCheck class="size-7" />
 				Proyectos</h2>
 			<AboutMe />
 		</SectionConteiner>
+
 	</main>
 </Layout>
 
