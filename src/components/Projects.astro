@@ -7,97 +7,210 @@ import GitHubIcon from "./icons/GitHubIcon.astro";
 import LinkIcon from "./icons/LinkIcon.astro";
 import TailwindIcon from "./icons/TailwindIcon.astro";
 import WordPressIcon from "./icons/WordpressIcon.astro";
+import AngularIcon from "./icons/AngularIcon.astro";
+import CppIcon from "./icons/CppIcon.astro";
+import DockerIcon from "./icons/DockerIcon.astro";
+import GoIcon from "./icons/GoIcon.astro";
+import GraphQLIcon from "./icons/GraphQLIcon.astro";
+import MySQLIcon from "./icons/MySQLIcon.astro";
+import UnityIcon from "./icons/UnityIcon.astro";
+import NodeIcon from "./icons/NodeIcon.astro";
+import ExpressIcon from "./icons/ExpressIcon.astro";
+import VuetifyIcon from "./icons/VuetifyIcon.astro";
+
+var classGlobal =
+	"bg-white/5 border border-white/10 border-gray-300 text-black/70 dark:text-white";
 
 const TAGS = {
 	PHP: {
 		name: "PHP",
-		class: "text-white",
+		class: classGlobal,
 		icon: PHPIcon,
 	},
 	Vue: {
 		name: "Vue",
-		class: "text-white",
+		class: classGlobal,
 		icon: VueJSIcon,
 	},
 	JavaScript: {
 		name: "JavaScript",
-		class: "text-white",
+		class: classGlobal,
 		icon: JavaScriptIcon,
 	},
-    Tailwind: {
-        name: "Tailwind",
-        class: "text-white",
-        icon: TailwindIcon,
+	Tailwind: {
+		name: "Tailwind",
+		class: classGlobal,
+		icon: TailwindIcon,
+	},
+	WordPress: {
+		name: "WordPress",
+		class: classGlobal,
+		icon: WordPressIcon,
+	},
+	Angular: {
+		name: "Angular",
+		class: classGlobal,
+		icon: AngularIcon,
+	},
+	Cpp: {
+		name: "C++",
+		class: classGlobal,
+		icon: CppIcon,
+	},
+	Docker: {
+		name: "Docker",
+		class: classGlobal,
+		icon: DockerIcon,
+	},
+	Go: {
+		name: "Go",
+		class: classGlobal,
+		icon: GoIcon,
+	},
+	GraphQL: {
+		name: "GraphQL",
+		class: classGlobal,
+		icon: GraphQLIcon,
+	},
+	MySQL: {
+		name: "MySQL",
+		class: classGlobal,
+		icon: MySQLIcon,
+	},
+	Unity: {
+		name: "Unity",
+		class: classGlobal,
+		icon: UnityIcon,
+	},
+	Node: {
+		name: "Node",
+		class: classGlobal,
+		icon: NodeIcon,
+	},
+	Express: {
+		name: "Express",
+		class: classGlobal,
+		icon: ExpressIcon,
+	},
+    Vuetify: {
+        name: "Vuetify",
+        class: classGlobal,
+        icon: VuetifyIcon,
     },
-    WordPress: {
-        name: "WordPress",
-        class: "text-white",
-        icon: WordPressIcon,
-    },
+    TypeScript: {
+        name: "TypeScript",
+        class: classGlobal,
+        icon: NodeIcon,
+    }
 };
 
 const PROJECTS = [
 	{
 		title: "Gofacturas CMR",
 		description:
-			"Gofacturas CMR - Gofacturas - Gofacturas CMR - Gofacturas CMR - Gofacturas CMR - Gofacturas CMR - Gofacturas CMR - Gofacturas CMR",
+			"Sistema de gestión de negocios, emision de facturas electronicas, reportes, inventarios y mucho mas.",
 		link: "https://gofacturas.com/",
-		gitgub: "https://github.com/Emermv/gofacturas/",
-		image: "/projects/gofacturas.webp",
-		tags: [TAGS.PHP, TAGS.Vue, TAGS.JavaScript],
+		github: "https://github.com/Emermv/gofacturas/",
+		image: "/projects/gofacturas-1.webp",
+		tags: [
+			TAGS.PHP,
+			TAGS.Vue,
+            TAGS.Vuetify,
+			TAGS.Docker,
+			TAGS.MySQL,
+		],
+	},
+    {
+        title: "Go Ventas",
+        description:
+            "Sistema de gestión de negocios, emision de facturas electronicas, reportes, inventarios y mucho mas.",
+        link: "https://gofacturas.com/",
+        github: "https://github.com/Emermv/gofacturas/",
+        image: "/projects/goventas-1.webp",
+        tags: [
+            TAGS.Tailwind,
+            TAGS.Angular,
+            TAGS.TypeScript,
+            TAGS.GraphQL,
+            TAGS.Go,
+            TAGS.Docker,
+            TAGS.MySQL,
+        ],
+    },
+	{
+		title: "Juego ARCADE",
+		description:
+			"Prision Arcana, juego de tipo arcade desarrollado en Unity con el lenguaje C++, echo para escritorio.",
+		link: "",
+		github: "ttps://github.com/jmorales01/prision_arcana",
+		image: "/projects/arcade-1.webp",
+		tags: [TAGS.Cpp, TAGS.Docker, TAGS.Unity],
 	},
 	{
-	    title: "Astro",
-	    description: "The official Astro framework",
-	    link: "https://astro.build/",
-	    gitgub: "https://github.com/withastro/astro",
-	    image: "/projects/gofacturas.webp",
-	    tags:  [TAGS.PHP, TAGS.Vue, TAGS.JavaScript],
+		title: "API REST con Express",
+		description:
+			"API REST con Express para una hackathon, endpoints para CRUD de cursos, alumnos, salas etc.",
+		link: "",
+		github: "https://github.com/jmorales01/hackathon-api",
+		image: "/projects/api-1.webp",
+		tags: [TAGS.JavaScript, TAGS.Docker, TAGS.Node, TAGS.MySQL],
 	},
 ];
 ---
 
-<section
-    class="flex flex-col gap-y-16">
-    {
-        PROJECTS.map((project) => (
-            <article>
-                <h3 class="text-2xl font-semibold text-yellow-200 mb-2">
-                    {project.title}
-                </h3>
-                <p class="text-lg mb-4 text-pretty">{project.description}</p>
-                <ul class="flex gap-x-2 flex-row">
-                    {project.tags.map((tag) => (
-                        <li>
-                            <span
-                                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
-                            >
-                                <tag.icon class="size-4" />
-                                {tag.name}
-                            </span>
-                        </li>
-                    ))}
-                </ul>
-                <img
-                    loading="lazy"
-                    class="rounded shadow-2xl shadow-white/10 aspect-video"
-                    src={project.image}
-                    alt={`Captura de pantalla del proyecto ${project.title}`}
-                    srcset=""
-                />
-                <footer class="flex gap-x-4 items-end justify-start mt-4">
-                    {project.gitgub && 
-                        <LinkButton hrf={project.gitgub}>
-                            <GitHubIcon class="size-6" />
-                            Ver proyecto
-                        </LinkButton>
-                    }
-                    <LinkButton hrf={project.link}>
-                        <LinkIcon />
-                        Ir a sitio web
-                    </LinkButton>
-                </footer>
-            </article>
-        ))
-    }
-</section>
+<div class="flex flex-col gap-y-16">
+	{
+		PROJECTS.map(({ image, title, description, tags, link, github }) => (
+			<article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+				<div class="w-full md:w-1/2">
+					<div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+						<img
+							alt="Recién llegado vs 5 años en Nueva Zelanda"
+							class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
+							loading="lazy"
+							src={image}
+						/>
+					</div>
+				</div>
+
+				<div class="w-full md:w-1/2 md:max-w-lg">
+					<h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+						{title}
+					</h3>
+					<div class="flex flex-wrap mt-2">
+						<ul class="flex flex-wrap mb-2 gap-x-2 gap-y-1">
+							{tags.map((tag) => (
+								<li>
+									<span
+										class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+									>
+										<tag.icon class="size-4" />
+										{tag.name}
+									</span>
+								</li>
+							))}
+						</ul>
+
+						<div class="mt-2 text-gray-700 dark:text-gray-400">
+							{description}
+						</div>
+						<footer class="flex items-end justify-start mt-4 gap-x-4">
+							{github && (
+								<LinkButton href={github}>
+									<GitHubIcon class="size-4" />
+									Codigo
+								</LinkButton>
+							)}
+							{link && (
+								<LinkButton href={link}>
+									<LinkIcon class="size-4" />
+									web
+								</LinkButton>
+							)}
+						</footer>
+					</div>
+				</div>
+			</article>
+		))
+	}
+</div>
