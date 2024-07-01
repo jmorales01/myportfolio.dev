@@ -8,6 +8,8 @@ import ProfileCheckIcon from '@/components/icons/ProfileCheckIcon.astro';
 import AboutMe from '@/components/AboutMe.astro';
 import SectionContainer from '../components/SectionContainer.astro';
 import Hero from '@/components/Hero.astro';
+import ContactIcon from '@/components/icons/ContactIcon.astro';
+import Contact from '@/components/Contact.astro';
 ---
 
 <Layout title="jl mora"
@@ -47,6 +49,15 @@ import Hero from '@/components/Hero.astro';
 			Sobre mí
 		  </h2>
 		  <AboutMe />
+		</SectionContainer>
+		<SectionContainer id="contacto">
+		  <h2
+			class="flex items-center mb-6 text-3xl font-semibold gap-x-8 text-black/80 dark:text-white"
+		  >
+			<ContactIcon class="size-8" />
+			Contactame
+		  </h2>
+		  <Contact />
 		</SectionContainer>
 	  </div>
 	  </main>
