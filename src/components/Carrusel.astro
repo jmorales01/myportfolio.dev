@@ -1,0 +1,45 @@
+---
+const { images, index } = Astro.props;
+---
+
+<div id={`carrusel-project`} class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+  {
+  images.map(({ code, src, alt }, index) => (
+    <img
+      id={`${code}-${index}`}
+      alt={alt}
+      class={`object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105 hidden`}
+      loading="lazy"
+      src={src}
+      data-index={index}
+    />
+  ))
+  }
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Crear un carrusel de imágenes
+    const carrusel = document.querySelector('#carrusel-project');
+    const img = carrusel.querySelectorAll('img');
+    let currentIndex = 0;
+
+    function showImage(index) {
+      img.forEach((image, idx) => {
+        // Quitar el class hidden de la imagen actual
+        image.style.display = idx === index ? 'block' : 'none';
+      });
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % img.length;
+      showImage(currentIndex);
+    }
+
+    // Cambiar imagen cada 1 segundo
+    setInterval(nextImage, 3000);
+
+    // Mostrar la primera imagen
+    showImage(currentIndex);
+  });
+</script>

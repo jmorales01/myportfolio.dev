@@ -17,6 +17,7 @@ import UnityIcon from "./icons/UnityIcon.astro";
 import NodeIcon from "./icons/NodeIcon.astro";
 import ExpressIcon from "./icons/ExpressIcon.astro";
 import VuetifyIcon from "./icons/VuetifyIcon.astro";
+import Carrusel from "./Carrusel.astro";
 
 var classGlobal =
 	"bg-black/5 dark:bg-white/5 border border-white/10 border-gray-300 text-black/70 dark:text-white hover:bg-white/10 hover:scale-105 transition";
@@ -111,7 +112,11 @@ const PROJECTS = [
 			"Sistema de gestión de negocios, emision de facturas electronicas, reportes, inventarios y mucho mas.",
 		link: "https://gofacturas.com/",
 		github: "https://github.com/Emermv/gofacturas/",
-		image: "/projects/gofacturas-1.webp",
+		image: [
+			{code:"gofacturas", src:"/projects/gofacturas-1.webp", alt:'Gofacturas CMR'},
+			{code:"gofacturas", src:"/projects/gofacturas-2.webp", alt:'Gofacturas CMR'},
+			{code:"gofacturas", src:"/projects/gofacturas-3.webp", alt:'Gofacturas CMR'},
+		],
 		tags: [
 			TAGS.PHP,
 			TAGS.Vue,
@@ -126,7 +131,11 @@ const PROJECTS = [
             "Sistema de gestión de negocios, emision de facturas electronicas, reportes, inventarios y mucho mas.",
         link: "https://gofacturas.com/",
         github: "https://github.com/Emermv/gofacturas/",
-        image: "/projects/goventas-1.webp",
+        image: [
+			{code:"goventas", src:"/projects/goventas-1.webp", alt:'Gofacturas CMR'},
+			{code:"goventas", src:"/projects/goventas-2.webp", alt:'Gofacturas CMR'},
+			{code:"goventas", src:"/projects/goventas-3.webp", alt:'Gofacturas CMR'},
+		],
         tags: [
             TAGS.Tailwind,
             TAGS.Angular,
@@ -143,7 +152,10 @@ const PROJECTS = [
 			"Prision Arcana, juego de tipo arcade desarrollado en Unity con el lenguaje C++, echo para escritorio.",
 		link: "",
 		github: "ttps://github.com/jmorales01/prision_arcana",
-		image: "/projects/arcade-1.webp",
+		image: [
+			{code:"arcade", src:"/projects/arcade-1.webp", alt:'Juego ARCADE'},
+			{code:"arcade", src:"/projects/arcade-2.webp", alt:'Juego ARCADE'},
+		],
 		tags: [TAGS.Cpp, TAGS.Docker, TAGS.Unity],
 	},
 	{
@@ -152,7 +164,9 @@ const PROJECTS = [
 			"API REST con Express para una hackathon, endpoints para CRUD de cursos, alumnos, salas etc.",
 		link: "",
 		github: "https://github.com/jmorales01/hackathon-api",
-		image: "/projects/api-1.webp",
+		image: [
+			{code:"api", src:"/projects/api-1.webp", alt:'API REST con Express'},
+		],
 		tags: [TAGS.JavaScript, TAGS.Docker, TAGS.Node, TAGS.MySQL],
 	},
 ];
@@ -160,17 +174,10 @@ const PROJECTS = [
 
 <div class="flex flex-col gap-y-16">
 	{
-		PROJECTS.map(({ image, title, description, tags, link, github }) => (
+		PROJECTS.map(({ image, title, description, tags, link, github }, index) => (
 			<article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
 				<div class="w-full md:w-1/2">
-					<div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
-						<img
-							alt="Recién llegado vs 5 años en Nueva Zelanda"
-							class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105"
-							loading="lazy"
-							src={image}
-						/>
-					</div>
+						<Carrusel images={image} index={index} />
 				</div>
 
 				<div class="w-full md:w-1/2 md:max-w-lg">
