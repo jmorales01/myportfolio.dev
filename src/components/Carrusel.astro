@@ -17,21 +17,48 @@ const { images, carruselId } = Astro.props;
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const carrusel = document.querySelector('#api');
-    const img = carrusel.querySelectorAll('img');
-    let currentIndex = 0;
+  const PROJECTS = [
+    { code: 'gofacturas' },
+    { code: 'goventas' },
+    { code: 'api' },
+    { code: 'arcade' },
+  ];
 
-    function showImage(index) {
-      img.forEach((image, idx) => {
-        image.style.display = idx === index ? 'block' : 'none';
-      });
-    }
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % img.length;
+  document.addEventListener('DOMContentLoaded', () => {
+    PROJECTS.forEach(project => {
+      const carrusel = document.querySelector(`#${project.code}`);
+      const img = carrusel.querySelectorAll('img');
+      let currentIndex = 0;
+      let intervalId = null;
+
+      function showImage(index) {
+        img.forEach((image, idx) => {
+          image.style.display = idx === index ? 'block' : 'none';
+        });
+      }
+
+      function nextImage() {
+        currentIndex = (currentIndex + 1) % img.length;
+        showImage(currentIndex);
+      }
+
+      // Función para iniciar el intervalo
+      function startInterval() {
+        if (!intervalId) {
+          intervalId = setInterval(nextImage, 2000);
+        }
+      }
+
+      // Función para detener el intervalo
+      function stopInterval() {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+
+      // Mostrar la primera imagen y esperar el hover para iniciar el intervalo
       showImage(currentIndex);
-    }
-    setInterval(nextImage, 4000);
-    showImage(currentIndex);
+      carrusel.addEventListener('mouseenter', startInterval);
+      carrusel.addEventListener('mouseleave', stopInterval);
+    });
   });
 </script>
