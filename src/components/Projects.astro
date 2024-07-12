@@ -107,15 +107,16 @@ const TAGS = {
 
 const PROJECTS = [
 	{
+		code: "gofacturas",
 		title: "Gofacturas CMR",
 		description:
 			"Sistema de gestión de negocios, emision de facturas electronicas, reportes, inventarios y mucho mas.",
 		link: "https://gofacturas.com/",
 		github: "https://github.com/Emermv/gofacturas/",
 		image: [
-			{code:"gofacturas", src:"/projects/gofacturas-1.webp", alt:'Gofacturas CMR'},
-			{code:"gofacturas", src:"/projects/gofacturas-2.webp", alt:'Gofacturas CMR'},
-			{code:"gofacturas", src:"/projects/gofacturas-3.webp", alt:'Gofacturas CMR'},
+			{src:"/projects/gofacturas-1.webp", alt:'Gofacturas CMR'},
+			{src:"/projects/gofacturas-2.webp", alt:'Gofacturas CMR'},
+			{src:"/projects/gofacturas-3.webp", alt:'Gofacturas CMR'},
 		],
 		tags: [
 			TAGS.PHP,
@@ -126,15 +127,16 @@ const PROJECTS = [
 		],
 	},
     {
+		code: "goventas",
         title: "Go Ventas",
         description:
             "Sistema de gestión de negocios, emision de facturas electronicas, reportes, inventarios y mucho mas.",
         link: "https://gofacturas.com/",
         github: "https://github.com/Emermv/gofacturas/",
         image: [
-			{code:"goventas", src:"/projects/goventas-1.webp", alt:'Gofacturas CMR'},
-			{code:"goventas", src:"/projects/goventas-2.webp", alt:'Gofacturas CMR'},
-			{code:"goventas", src:"/projects/goventas-3.webp", alt:'Gofacturas CMR'},
+			{src:"/projects/goventas-1.webp", alt:'Gofacturas CMR'},
+			{src:"/projects/goventas-2.webp", alt:'Gofacturas CMR'},
+			{src:"/projects/goventas-3.webp", alt:'Gofacturas CMR'},
 		],
         tags: [
             TAGS.Tailwind,
@@ -147,25 +149,28 @@ const PROJECTS = [
         ],
     },
 	{
+		code: "arcade",
 		title: "Juego ARCADE",
 		description:
 			"Prision Arcana, juego de tipo arcade desarrollado en Unity con el lenguaje C++, echo para escritorio.",
 		link: "",
 		github: "ttps://github.com/jmorales01/prision_arcana",
 		image: [
-			{code:"arcade", src:"/projects/arcade-1.webp", alt:'Juego ARCADE'},
-			{code:"arcade", src:"/projects/arcade-2.webp", alt:'Juego ARCADE'},
+			{src:"/projects/arcade-1.webp", alt:'Juego ARCADE'},
+			{src:"/projects/arcade-2.webp", alt:'Juego ARCADE'},
 		],
 		tags: [TAGS.Cpp, TAGS.Docker, TAGS.Unity],
 	},
 	{
+		code: "api",
 		title: "API REST con Express",
 		description:
 			"API REST con Express para una hackathon, endpoints para CRUD de cursos, alumnos, salas etc.",
 		link: "",
 		github: "https://github.com/jmorales01/hackathon-api",
 		image: [
-			{code:"api", src:"/projects/api-1.webp", alt:'API REST con Express'},
+			{src:"/projects/api-1.webp", alt:'API REST con Express'},
+			{src:"/projects/api-3.webp", alt:'API REST con Express'},
 		],
 		tags: [TAGS.JavaScript, TAGS.Docker, TAGS.Node, TAGS.MySQL],
 	},
@@ -174,10 +179,10 @@ const PROJECTS = [
 
 <div class="flex flex-col gap-y-16">
 	{
-		PROJECTS.map(({ image, title, description, tags, link, github }, index) => (
+		PROJECTS.map(({ code, image, title, description, tags, link, github }, index) => (
 			<article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
 				<div class="w-full md:w-1/2">
-						<Carrusel images={image} index={index} />
+						<Carrusel images={image} carruselId={code} />
 				</div>
 
 				<div class="w-full md:w-1/2 md:max-w-lg">
