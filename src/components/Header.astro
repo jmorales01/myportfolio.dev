@@ -1,5 +1,6 @@
 ---
 import LenguageSelector from "./LenguageSelector.astro"
+import MenuToggle from "./MenuToggle.astro"
 import ThemeToggle from "./ThemeToggle.astro"
 import MenuIcon from "./icons/MenuIcon.astro"
 
@@ -47,30 +48,7 @@ const navItems = [
     }
 	<!-- <LenguageSelector /> -->
     <ThemeToggle />
-
-    <button data-collapse-toggle="navbar-dropdown" type="button"
-      class="inline-flex items-center ml-4 w-7 h-7 justify-center text-sm text-gray-500 rounded-lg md:hidden bg-black/10 dark:bg-white/10 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-      aria-controls="navbar-dropdown" aria-expanded="false">
-      <span class="sr-only">Open main menu</span>
-      <MenuIcon class="size-5 transition-all text-black/60 dark:text-white" />
-    </button>
-    <div
-      id="navbar-menu"
-      class="absolute hidden scale-80 top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
-    >
-      <ul>
-        {
-          navItems.map((link) => (
-            <li class="navbar-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm">
-              <a class="rounded-full bg-black/10 dark:bg-white/10 hover:text-yellow-500 dark:hover:text-yellow-400" 
-                aria-label={link.label} href={link.url}>
-                {link.title}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    <MenuToggle items={navItems} />
   </nav>
 </header>
 

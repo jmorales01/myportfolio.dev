@@ -1,0 +1,89 @@
+---
+import MenuIcon from "./icons/MenuIcon.astro";
+
+const { items } = Astro.props;
+---
+
+<div class="md:hidden relative mx-1 py-1 px-2 border-1 rounded-md bg-black/10 dark:bg-white/10 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+    <button
+        id="navbar-toggle-btn"
+        class="appearance-none border-none flex hover:scale-115 transition"
+    >
+        <span class="sr-only">Open main menu</span>
+        <MenuIcon class="size-5 transition-all text-black/60 dark:text-white" />
+    </button>
+
+    <div
+        id="navbar-menu"
+        class="absolute hidden scale-80 top-8 right-0 px-1 py-2 min-w-[10rem] rounded-md border border-gray-100 bg-white/90 dark:bg-gray-900/90 dark:border-gray-500/20 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-md"
+    >
+        <ul>
+        {
+            items.map((link) => (
+            <li class="navbar-menu-option px-2 py-1.5 cursor-default hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm">
+                <a class="block w-full hover:text-yellow-500 dark:hover:text-yellow-400" 
+                aria-label={link.label} href={link.url}>
+                {link.title}
+                </a>
+            </li>
+            ))
+        }
+        </ul>
+    </div>
+</div>
+
+<style>
+  #navbar-menu.open {
+    display: inline;
+    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @keyframes scale-up-center {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('navbar-toggle-btn');
+      const navbarMenu = document.getElementById('navbar-menu');
+  
+      // Función para abrir el menú
+      function openMenu() {
+        navbarMenu.classList.add('open');
+        navbarMenu.style.display = 'block';
+        document.addEventListener('click', closeMenuOnClickOutside);
+      }
+  
+      // Función para cerrar el menú
+      function closeMenu() {
+        navbarMenu.classList.remove('open');
+        navbarMenu.style.display = 'none';
+        document.removeEventListener('click', closeMenuOnClickOutside);
+      }
+  
+      // Función para cerrar el menú si se hace clic fuera de él
+      function closeMenuOnClickOutside(event) {
+        if (!navbarMenu.contains(event.target) && !toggleBtn.contains(event.target)) {
+          closeMenu();
+        }
+      }
+  
+      // Evento de clic en el botón para alternar el menú
+      toggleBtn.addEventListener('click', () => {
+        if (navbarMenu.classList.contains('open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+    });
+  </script>
