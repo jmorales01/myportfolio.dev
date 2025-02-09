@@ -169,7 +169,7 @@ const PROJECTS = [
 		link: "",
 		github: "https://github.com/jmorales01/hackathon-api",
 		image: [
-			{src:"/projects/api-1.webp", alt:'API REST con Express'},
+			{src:"../projects/api-1.webp", alt:'API REST con Express'},
 			{src:"/projects/api-3.webp", alt:'API REST con Express'},
 		],
 		tags: [TAGS.JavaScript, TAGS.Docker, TAGS.Node, TAGS.MySQL],
@@ -208,13 +208,13 @@ const PROJECTS = [
 						</div>
 						<footer class="flex items-end justify-start mt-4 gap-x-4">
 							{github && (
-								<LinkButton href={github}>
+								<LinkButton href={github} target="_blank">
 									<GitHubIcon class="size-4" />
 									Codigo
 								</LinkButton>
 							)}
 							{link && (
-								<LinkButton href={link}>
+								<LinkButton href={link} target="_blank">
 									<LinkIcon class="size-4" />
 									web
 								</LinkButton>
