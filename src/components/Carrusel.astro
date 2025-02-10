@@ -6,12 +6,12 @@ const { images, carruselId } = Astro.props;
   id={carruselId} 
   class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-hidden rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50"
 >
-  <div class="carousel-container relative w-full h-56 sm:h-full">
+  <div class="carousel-container relative w-full h-56">
     {
       images.map(({src, alt}, idx) => (
         <img
           alt={alt}
-          class={`absolute top-0 left-0 w-full h-full object-cover object-top transition-opacity duration-500 ease-in-out opacity-0 md:scale-110 md:group-hover:scale-105`}
+          class={`absolute top-0 left-0 w-full h-full object-cover object-top transition-opacity duration-500 ease-in-out ${idx === 0 ? 'opacity-100' : 'opacity-0'} md:scale-110 md:group-hover:scale-105`}
           loading="lazy"
           src={src}
           data-index={idx}
@@ -35,6 +35,8 @@ const { images, carruselId } = Astro.props;
       if (!carrusel) return;
 
       const images = Array.from(carrusel.querySelectorAll('img'));
+      if (images.length === 0) return;
+
       let currentIndex = 0;
       let intervalId = null;
 
@@ -55,12 +57,12 @@ const { images, carruselId } = Astro.props;
           // Fade in next image
           images[nextIndex].style.opacity = '1';
           currentIndex = nextIndex;
-        }, 500); // Match duration-500 from CSS
+        }, 500);
       }
 
       function startInterval() {
-        if (!intervalId) {
-          intervalId = setInterval(nextImage, 3000); // Increased interval for better UX
+        if (!intervalId && images.length > 1) {
+          intervalId = setInterval(nextImage, 2000);
         }
       }
 
@@ -71,17 +73,13 @@ const { images, carruselId } = Astro.props;
         }
       }
 
-      // Initialize first image
-      showImage(currentIndex);
-
-      // Add event listeners
-      carrusel.addEventListener('mouseenter', startInterval);
-      carrusel.addEventListener('mouseleave', () => {
-        stopInterval();
-        // Optional: Reset to first image when mouse leaves
-        // showImage(0);
-        // currentIndex = 0;
-      });
+      // Add event listeners only if there's more than one image
+      if (images.length > 1) {
+        carrusel.addEventListener('mouseenter', startInterval);
+        carrusel.addEventListener('mouseleave', () => {
+          stopInterval();
+        });
+      }
 
       // Cleanup on page leave
       document.addEventListener('visibilitychange', () => {

@@ -108,6 +108,7 @@ const TAGS = {
 const PROJECTS = [
 	{
 		code: "gofacturas",
+		type: "web",
 		title: "Gofacturas CMR",
 		description:
 			"Sistema de gestión de negocios, emision de facturas electronicas, reportes, inventarios y mucho mas.",
@@ -128,6 +129,7 @@ const PROJECTS = [
 	},
     {
 		code: "goventas",
+		type: "web",
         title: "Go Ventas",
         description:
             "Sistema de gestión de negocios, emision de facturas electronicas, reportes, inventarios y mucho mas.",
@@ -150,6 +152,7 @@ const PROJECTS = [
     },
 	{
 		code: "arcade",
+		type: "game",
 		title: "Juego ARCADE",
 		description:
 			"Prision Arcana, juego de tipo arcade desarrollado en Unity con el lenguaje C++, echo para escritorio.",
@@ -163,6 +166,7 @@ const PROJECTS = [
 	},
 	{
 		code: "api",
+		type: "api",
 		title: "API REST con Express",
 		description:
 			"API REST con Express para una hackathon, endpoints para CRUD de cursos, alumnos, salas etc.",
@@ -175,54 +179,130 @@ const PROJECTS = [
 		tags: [TAGS.JavaScript, TAGS.Docker, TAGS.Node, TAGS.MySQL],
 	},
 ];
+
+const CATEGORIES = [
+	{ id: "all", name: "Todos" },
+	{ id: "web", name: "Web" },
+	{ id: "api", name: "APIs" },
+	{ id: "app", name: "Apps" },
+	{ id: "game", name: "Juegos" },
+];
 ---
 
-<div class="flex flex-col gap-y-16">
-	{
-		PROJECTS.map(({ code, image, title, description, tags, link, github }, index) => (
-			<article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
-				<div class="w-full md:w-1/2">
-						<Carrusel images={image} carruselId={code} />
-				</div>
+<div class="flex flex-col gap-8">
+	<nav class="flex justify-start">
+		<ul
+			class="flex flex-wrap gap-6"
+		>
+			{
+				CATEGORIES.map(({ id, name }) => (
+					<li>
+						<button
+							class="category-btn px-4 py-0.5 text-sm rounded-md transition-all duration-300 bg-black/10 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-gray-700"
+							data-category={id}
+						>
+							{name}
+						</button>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
 
-				<div class="w-full md:w-1/2 md:max-w-lg">
-					<h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
-						{title}
-					</h3>
-					<div class="flex flex-wrap mt-2">
-						<ul class="flex flex-wrap mb-2 gap-x-2 gap-y-1">
-							{tags.map((tag) => (
-								<li>
-									<span
-										class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
-									>
-										<tag.icon class="size-4" />
-										{tag.name}
-									</span>
-								</li>
-							))}
-						</ul>
-
-						<div class="mt-2 text-gray-700 dark:text-gray-400">
-							{description}
+	<div class="flex flex-col gap-y-16">
+		{
+			PROJECTS.map(
+				(
+					{ code, type, image, title, description, tags, link, github },
+					index
+				) => (
+					<article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0 project-item transition-all duration-300"
+						data-type={type}>
+						<div class="w-full md:w-1/2">
+							<Carrusel images={image} carruselId={code} />
 						</div>
-						<footer class="flex items-end justify-start mt-4 gap-x-4">
-							{github && (
-								<LinkButton href={github} target="_blank">
-									<GitHubIcon class="size-4" />
-									Codigo
-								</LinkButton>
-							)}
-							{link && (
-								<LinkButton href={link} target="_blank">
-									<LinkIcon class="size-4" />
-									web
-								</LinkButton>
-							)}
-						</footer>
-					</div>
-				</div>
-			</article>
-		))
-	}
+
+						<div class="w-full md:w-1/2 md:max-w-lg">
+							<h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+								{title}
+							</h3>
+							<div class="flex flex-wrap mt-2">
+								<ul class="flex flex-wrap mb-2 gap-x-2 gap-y-1">
+									{tags.map((tag) => (
+										<li>
+											<span
+												class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2`}
+											>
+												<tag.icon class="size-4" />
+												{tag.name}
+											</span>
+										</li>
+									))}
+								</ul>
+
+								<div class="mt-2 text-gray-700 dark:text-gray-400">
+									{description}
+								</div>
+								<footer class="flex items-end justify-start mt-4 gap-x-4">
+									{github && (
+										<LinkButton href={github} target="_blank">
+											<GitHubIcon class="size-4" />
+											Codigo
+										</LinkButton>
+									)}
+									{link && (
+										<LinkButton href={link} target="_blank">
+											<LinkIcon class="size-4" />
+											web
+										</LinkButton>
+									)}
+								</footer>
+							</div>
+						</div>
+					</article>
+				)
+			)
+		}
+	</div>
 </div>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const categoryButtons = document.querySelectorAll(".category-btn");
+		const projects = document.querySelectorAll(".project-item");
+
+		// Marcar el botón "Todos" como activo por defecto
+		const allButton = document.querySelector('[data-category="all"]');
+		allButton?.classList.add("bg-gray-200", "dark:bg-gray-700");
+
+		categoryButtons.forEach((button) => {
+			button.addEventListener("click", () => {
+				// Remover clase activa de todos los botones
+				categoryButtons.forEach((btn) => {
+					btn.classList.remove("bg-gray-200", "dark:bg-gray-700");
+				});
+
+				// Agregar clase activa al botón clickeado
+				button.classList.add("bg-gray-200", "dark:bg-gray-700");
+
+				const selectedCategory = button.getAttribute("data-category");
+
+				projects.forEach((project) => {
+					const projectType = project.getAttribute("data-type");
+
+					if (selectedCategory === "all" || selectedCategory === projectType) {
+						(project as HTMLElement).style.display = "flex";
+						(project as HTMLElement).style.opacity = "1";
+    					(project as HTMLElement).style.transform = "translateY(0)";
+					} else {
+						(project as HTMLElement).style.opacity = "0";
+    					(project as HTMLElement).style.transform = "translateY(20px)";
+						setTimeout(() => {
+							(project as HTMLElement).style.display = "none";
+						}, 300);
+					}
+				});
+			});
+		});
+	});
+</script>
