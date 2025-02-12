@@ -17,6 +17,17 @@ import UnityIcon from "./icons/UnityIcon.astro";
 import NodeIcon from "./icons/NodeIcon.astro";
 import ExpressIcon from "./icons/ExpressIcon.astro";
 import VuetifyIcon from "./icons/VuetifyIcon.astro";
+import FlutterIcon from "./icons/FlutterIcon.astro";
+import CloudflareIcon from "./icons/CloudflareIcon.astro";
+import RedisIcon from "./icons/RedisIcon.astro";
+import SupabaseIcon from "./icons/SupabaseIcon.astro";
+import NextIcon from "./icons/NextIcon.astro";
+import PostgreSQLIcon from "./icons/PostgreSQLIcon.astro";
+import PowerBIIcon from "./icons/PowerBIIcon.astro";
+import PythonIcon from "./icons/PythonIcon.astro";
+import LookerIcon from "./icons/LookerIcon.astro";
+import OpenAIIcon from "./icons/OpenAIIcon.astro";
+import OllamaIcon from "./icons/OllamaIcon.astro";
 import Carrusel from "./Carrusel.astro";
 
 var classGlobal =
@@ -102,7 +113,62 @@ const TAGS = {
         name: "TypeScript",
         class: classGlobal,
         icon: NodeIcon,
-    }
+    },
+	Redis: {
+		name: "Redis",
+		class: classGlobal,
+		icon: RedisIcon,
+	},
+	Cloudflare: {
+		name: "Cloudflare",
+		class: classGlobal,
+		icon: CloudflareIcon,
+	},
+	Flutter: {
+		name: "Flutter",
+		class: classGlobal,
+		icon: FlutterIcon,
+	},
+	Supabase: {
+		name: "Supabase",
+		class: classGlobal,
+		icon: SupabaseIcon,
+	},
+	Next: {
+		name: "Next",
+		class: classGlobal,
+		icon: NextIcon,
+	},
+	PostgreSQL: {
+		name: "PostgreSQL",
+		class: classGlobal,
+		icon: PostgreSQLIcon,
+	},
+	PowerBI: {
+		name: "PowerBI",
+		class: classGlobal,
+		icon: PowerBIIcon,
+	},
+	Python: {
+		name: "Python",
+		class: classGlobal,
+		icon: PythonIcon,
+	},
+	Looker: {
+		name: "Looker",
+		class: classGlobal,
+		icon: LookerIcon,
+	},
+	OpenAI: {
+		name: "OpenAI",
+		class: classGlobal,
+		icon: OpenAIIcon,
+	},
+	Ollama: {
+		name: "Ollama",
+		class: classGlobal,
+		icon: OllamaIcon,
+	},
 };
 
 const PROJECTS = [
@@ -151,6 +217,52 @@ const PROJECTS = [
         ],
     },
 	{
+		code: "appmuni",
+		type: "app",
+		title: "App de consultas municipales",
+		description:
+			"App de consultas de DNI, Placa de vehiculo, y otras funcionalidades, desarrollada con Flutter y Firebase para la municipalidad de VMT.",
+		link: "",
+		github: "https://github.com/jmorales01/hackathon-api",
+		image: [
+			{src:"/projects/app1.webp", alt:'APP de consultas municipales'},
+			{src:"/projects/app2.webp", alt:'Home de la APP de consultas municipales'},
+			{src:"/projects/app3.webp", alt:'Modulos de la APP de consultas municipales'},
+		],
+		tags: [TAGS.Flutter, TAGS.Docker, TAGS.Cloudflare, TAGS.Redis],
+	},
+	{
+		code: "sckincheck",
+		type: "web",
+		title: "Skincheck - IA web",
+		description:
+			"Plataforma web para la deteccion de lesiones en la piel, usando IA entrenado en V8 de Google.",
+		link: "",
+		github: "https://skincheck-app.vercel.app",
+		image: [
+			{src:"", alt:'APP de consultas municipales'},
+			{src:"", alt:'Home de la APP de consultas municipales'},
+			{src:"", alt:'Modulos de la APP de consultas municipales'},
+		],
+		tags: [TAGS.Tailwind, TAGS.Docker, TAGS.Supabase, TAGS.Next, TAGS.Cloudflare, TAGS.OpenAI],
+	},
+	{
+		code: "data-analitics",
+		type: "data",
+		title: "Dashboard - Analitica de Datos",
+		description:
+			"Dashboard para el analisis de datos, usando PowerBI, Locker Studio y TLS.",
+		link: "",
+		github: "https://app.powerbi.com/view?r=eyJrIjoiNWUwMTgyOTctODU1Mi00YzFkLWIzOTctMjNjYTVlODZjNzRiIiwidCI6ImM0YTY2YzM0LTJiYjctNDUxZi04YmUxLWIyYzI2YTQzMDE1OCIsImMiOjR9",
+		image: [
+			{src:"/projects/dashboard1.webp", alt:''},
+			{src:"/projects/dashboard2.webp", alt:''},
+			{src:"/projects/dashboard3.webp", alt:''},
+			{src:"/projects/dashboard4.webp", alt:''},
+		],
+		tags: [TAGS.PowerBI, TAGS.MySQL, TAGS.Supabase, TAGS.PostgreSQL, TAGS.Python, TAGS.Looker],
+	},
+	{
 		code: "arcade",
 		type: "game",
 		title: "Juego ARCADE",
@@ -173,7 +285,7 @@ const PROJECTS = [
 		link: "",
 		github: "https://github.com/jmorales01/hackathon-api",
 		image: [
-			{src:"../projects/api-1.webp", alt:'API REST con Express'},
+			{src:"/projects/api-1.webp", alt:'API REST con Express'},
 			{src:"/projects/api-3.webp", alt:'API REST con Express'},
 		],
 		tags: [TAGS.JavaScript, TAGS.Docker, TAGS.Node, TAGS.MySQL],
@@ -186,6 +298,7 @@ const CATEGORIES = [
 	{ id: "api", name: "APIs" },
 	{ id: "app", name: "Apps" },
 	{ id: "game", name: "Juegos" },
+	{ id: "data", name: "Data" },
 ];
 ---
 
